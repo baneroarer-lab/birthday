@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Secret 🎁</title>
+</head>
+<body style="text-align:center; margin-top:120px; font-family:sans-serif;">
+  <h2>Enter Password 🎉</h2>
+
+  <input type="password" id="pass" placeholder="Enter here">
+  <br><br>
+  <button onclick="check()">Open</button>
+
+  <script>
+    function check() {
+      var p = document.getElementById("pass").value;
+      if(p === "friend123") {
+        window.location.href = "birthday.html";
+      } else {
+        alert("Wrong password 😅");
+      }
+    }
+  </script>
+</body>
+</html>
