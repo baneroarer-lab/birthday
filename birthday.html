@@ -1,16 +1,98 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Happy Birthday 🎉</title>
+<title>Happy Birthday 🎂</title>
+
+<style>
+body {
+  text-align:center;
+  font-family:sans-serif;
+  background:black;
+  color:white;
+  overflow:hidden;
+}
+
+h1 {
+  margin-top:30px;
+  font-size:50px;
+  color:#ff4d6d;
+}
+
+p {
+  font-size:20px;
+}
+
+img {
+  width:200px;
+  margin:10px;
+  border-radius:10px;
+}
+
+.rose {
+  position:fixed;
+  top:-50px;
+  width:30px;
+  animation:fall linear infinite;
+}
+
+@keyframes fall {
+  to { transform:translateY(100vh); }
+}
+</style>
 </head>
-<body style="text-align:center; font-family:Arial; background:#ffe6f0;">
-  <h1>🎉 Happy Birthday! 🎂</h1>
-  <p>You are an amazing friend ❤️</p>
 
-  <img src="photo.png" width="250">
+<body>
 
-  <audio controls autoplay>
-    <source src="song.mp3" type="audio/mpeg">
-  </audio>
+<h1>🎉 Happy Birthday 🎂</h1>
+
+<p>
+You are not just a friend… you’re someone really special ❤️  
+Stay crazy, stay awesome 😎  
+</p>
+
+<!-- YOUR PHOTO -->
+<img src="photo.png">
+
+<!-- ANIME IMAGES -->
+<img src="https://i.imgur.com/3ZQ3Z4R.jpg">
+<img src="https://i.imgur.com/VKQ6F0T.jpg">
+<img src="https://i.imgur.com/W3bQb7N.jpg">
+
+<script>
+
+// falling roses 🌹
+setInterval(()=>{
+  let rose = document.createElement("img");
+  rose.src="https://i.imgur.com/6X4KQpT.png";
+  rose.className="rose";
+  rose.style.left=Math.random()*100+"%";
+  rose.style.animationDuration=(3+Math.random()*5)+"s";
+  document.body.appendChild(rose);
+
+  setTimeout(()=>rose.remove(),8000);
+},300);
+
+// confetti 🎉
+setInterval(()=>{
+  let c=document.createElement("div");
+  c.style.position="fixed";
+  c.style.width="8px";
+  c.style.height="8px";
+  c.style.background="#"+Math.floor(Math.random()*16777215).toString(16);
+  c.style.top="0";
+  c.style.left=Math.random()*window.innerWidth+"px";
+  document.body.appendChild(c);
+
+  let fall=setInterval(()=>{
+    c.style.top=(c.offsetTop+5)+"px";
+    if(c.offsetTop>window.innerHeight){
+      clearInterval(fall);
+      c.remove();
+    }
+  },30);
+},150);
+
+</script>
+
 </body>
 </html>
