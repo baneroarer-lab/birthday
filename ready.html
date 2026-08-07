@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Ready? 👀</title>
+<style>
+body {
+  text-align:center;
+  font-family:sans-serif;
+  background:linear-gradient(135deg,#a18cd1,#fbc2eb);
+  color:white;
+  padding-top:100px;
+}
+button {
+  padding:15px 30px;
+  margin:20px;
+  border:none;
+  border-radius:10px;
+  font-size:18px;
+}
+.yes { background:#00c853; color:white; }
+.no { background:#ff1744; color:white; position:absolute; }
+</style>
+</head>
+
+<body>
+
+<h1>Are you ready for your surprise? 😏</h1>
+
+<button class="yes" onclick="go()">YES 😍</button>
+<button class="no" id="noBtn">NO 😜</button>
+
+<script>
+function go(){
+  window.location.href="birthday.html";
+}
+
+// funny moving NO button
+let noBtn = document.getElementById("noBtn");
+noBtn.onmouseover = function(){
+  noBtn.style.left = Math.random()*80 + "%";
+  noBtn.style.top = Math.random()*80 + "%";
+}
+</script>
+
+</body>
+</html>
