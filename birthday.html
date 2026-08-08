@@ -114,28 +114,28 @@ Enjoy your day… this one’s yours 🎉✨
 </div>
 
 <!-- 🎵 MUSIC -->
+<!-- 🎵 MUSIC -->
 <audio id="music" loop>
-  <source src="https://www2.cs.uic.edu/~i101/SoundFiles/HappyBirthday.mid">
+  <source src="line.mp3" type="audio/mpeg">
 </audio>
 
-<!-- 🎉 CONFETTI -->
-<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-
 <script>
+let music = document.getElementById("music");
 
-// ▶️ Play music on click
-document.body.addEventListener("click", () => {
-    document.getElementById("music").play();
-}, { once: true });
+// ▶️ Resume music from saved time
+document.body.addEventListener("click", function startMusic() {
 
-// 🎉 Confetti
-setInterval(()=>{
-    confetti({
-        particleCount:80,
-        spread:70,
-        origin:{y:0.6}
-    });
-},2000);
+    let savedTime = localStorage.getItem("musicTime");
+
+    if(savedTime){
+        music.currentTime = savedTime;
+    }
+
+    music.play().catch(()=>{});
+
+    document.body.removeEventListener("click", startMusic);
+});
+
 
 // 🌹🌻 Falling flowers
 function flower(){
