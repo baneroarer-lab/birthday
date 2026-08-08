@@ -5,25 +5,17 @@
 
 <style>
 body {
-  text-align: center;
-  background: url('luffy.jpg') no-repeat center/cover;
-  color: white;
-  font-family: Arial;
-}
-
-img {
-  width: 200px;
-  margin-top: 20px;
-  border-radius: 20px;
+  text-align:center;
+  background:black;
+  color:white;
+  font-family:sans-serif;
 }
 
 button {
-  padding: 10px 20px;
-  margin: 10px;
-  font-size: 18px;
-  border-radius: 10px;
-  border: none;
-  cursor: pointer;
+  padding:15px 25px;
+  font-size:18px;
+  margin:10px;
+  position:relative;
 }
 </style>
 </head>
@@ -32,38 +24,34 @@ button {
 
 <h1>Are you ready? 😏</h1>
 
-<img src="https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif">
+<img src="https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif" width="200">
 
-<br>
+<br><br>
 
-<button onclick="moveYes(this)">YES 😍</button>
-<button onclick="noClicked()">NO 😒</button>
+<button id="yes" onclick="go()">YES 😍</button>
+<button onclick="no()">NO 😈</button>
 
 <script>
-let moveCount = 0;
 
-function moveYes(btn) {
-  if (moveCount < 2) {
-    btn.style.position = "absolute";
-    btn.style.top = Math.random() * 300 + "px";
-    btn.style.left = Math.random() * 300 + "px";
-    moveCount++;
-  } else {
-    goNext();
+let count = 0;
+
+document.getElementById("yes").onmouseover = function(){
+  if(count < 2){
+    this.style.position="absolute";
+    this.style.left=Math.random()*80+"%";
+    this.style.top=Math.random()*80+"%";
+    count++;
   }
 }
 
-function goNext() {
-  document.body.innerHTML = "<h1>Okay okay 😏 going ahead...</h1>";
-  
-  setTimeout(() => {
-    window.location.href = "wish.html";
-  }, 2000);
+function go(){
+  window.location.href="wish.html";
 }
 
-function noClicked() {
-  alert("No?? 😭 After all this effort?? Try again 😤");
+function no(){
+  alert("You really thought NO was an option? 😂");
 }
+
 </script>
 
 </body>
