@@ -5,38 +5,44 @@
 
 <style>
 body {
-  text-align:center;
-  font-family:sans-serif;
-  background:black;
-  color:white;
-  overflow:hidden;
+  text-align: center;
+  font-family: sans-serif;
+  background: black;
+  color: white;
+  overflow: hidden;
 }
 
 h1 {
-  margin-top:30px;
-  font-size:50px;
-  color:#ff4d6d;
+  margin-top: 30px;
+  font-size: 50px;
+  color: #ff4d6d;
 }
 
 p {
-  font-size:20px;
+  font-size: 20px;
+  width: 80%;
+  margin: auto;
 }
 
 img {
-  width:200px;
-  margin:10px;
-  border-radius:10px;
+  width: 200px;
+  margin: 10px;
+  border-radius: 10px;
 }
 
-.rose {
-  position:fixed;
-  top:-50px;
-  width:30px;
-  animation:fall linear infinite;
+/* 🌹🌻 falling flowers */
+.flower {
+  position: fixed;
+  top: -50px;
+  width: 35px;
+  pointer-events: none;
+  animation: fall linear forwards;
 }
 
 @keyframes fall {
-  to { transform:translateY(100vh); }
+  to {
+    transform: translateY(100vh) rotate(360deg);
+  }
 }
 </style>
 </head>
@@ -46,51 +52,78 @@ img {
 <h1>🎉 Happy Birthday 🎂</h1>
 
 <p>
-You are not just a friend… you’re someone really special ❤️  
-Stay crazy, stay awesome 😎  
+Today is not just your birthday…  
+It’s the day the world got a little more crazy 😏  
+
+You’re like Zoro (lost but strong 💪),  
+Gojo (too cool 😎),  
+Itachi (deep 🖤),  
+and Luffy (pure chaos 😂).  
+
+Life is honestly better with you in it.  
+
+Stay weird. Stay real. Stay YOU.  
+Happy Birthday once again 🎂🔥  
 </p>
 
 <!-- YOUR PHOTO -->
 <img src="photo.png">
 
 <!-- ANIME IMAGES -->
-<img src="https://i.imgur.com/3ZQ3Z4R.jpg">
-<img src="https://i.imgur.com/VKQ6F0T.jpg">
-<img src="https://i.imgur.com/W3bQb7N.jpg">
+<img src="zoro.jpg">
+<img src="gojo.jpg">
+<img src="itachi.jpg">
+<img src="luffy.jpg">
+
+<!-- 🎵 MUSIC -->
+<audio autoplay loop>
+  <source src="https://www2.cs.uic.edu/~i101/SoundFiles/HappyBirthday.mid" type="audio/mpeg">
+</audio>
+
+<!-- 🎊 CONFETTI LIBRARY -->
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
 <script>
 
-// falling roses 🌹
-setInterval(()=>{
-  let rose = document.createElement("img");
-  rose.src="https://i.imgur.com/6X4KQpT.png";
-  rose.className="rose";
-  rose.style.left=Math.random()*100+"%";
-  rose.style.animationDuration=(3+Math.random()*5)+"s";
-  document.body.appendChild(rose);
+// 🎊 First big burst
+setTimeout(() => {
+  confetti({
+    particleCount: 200,
+    spread: 120,
+    origin: { y: 0.6 }
+  });
+}, 500);
 
-  setTimeout(()=>rose.remove(),8000);
-},300);
+// 🎊 Continuous confetti
+setInterval(() => {
+  confetti({
+    particleCount: 80,
+    spread: 70,
+    origin: { y: 0.6 }
+  });
+}, 2000);
 
-// confetti 🎉
-setInterval(()=>{
-  let c=document.createElement("div");
-  c.style.position="fixed";
-  c.style.width="8px";
-  c.style.height="8px";
-  c.style.background="#"+Math.floor(Math.random()*16777215).toString(16);
-  c.style.top="0";
-  c.style.left=Math.random()*window.innerWidth+"px";
-  document.body.appendChild(c);
 
-  let fall=setInterval(()=>{
-    c.style.top=(c.offsetTop+5)+"px";
-    if(c.offsetTop>window.innerHeight){
-      clearInterval(fall);
-      c.remove();
-    }
-  },30);
-},150);
+// 🌹🌻 Falling flowers
+function createFlower() {
+  const flower = document.createElement("img");
+
+  if (Math.random() > 0.8) {
+    flower.src = "sunflower.jpg"; // 👈 your jpg
+  } else {
+    flower.src = "rose.jpg"; // 👈 your jpg
+  }
+
+  flower.className = "flower";
+  flower.style.left = Math.random() * window.innerWidth + "px";
+  flower.style.animationDuration = (3 + Math.random() * 5) + "s";
+
+  document.body.appendChild(flower);
+
+  setTimeout(() => flower.remove(), 8000);
+}
+
+setInterval(createFlower, 300);
 
 </script>
 
