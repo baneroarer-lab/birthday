@@ -87,7 +87,10 @@ button {
 
 let count = 0;
 
-document.getElementById("yes").onmouseover = function(){
+const yesBtn = document.getElementById("yes");
+
+// 🏃 YES button runs away twice
+yesBtn.onmouseover = function(){
   if(count < 2){
     this.style.position="absolute";
     this.style.left=Math.random()*80+"%";
@@ -100,8 +103,19 @@ function go(){
   window.location.href="wish.html";
 }
 
+// 😈 FUNNY NO RESPONSE
 function no(){
-  alert("You really thought NO was an option? 😂");
+
+  document.body.innerHTML = `
+    <h1>😤 Seriously? NO?</h1>
+    <p>You really gonna say NO on a birthday?? 😑</p>
+
+    <img src="https://media.giphy.com/media/3o7btPCcdNniyf0ArS/giphy.gif" width="250">
+
+    <p>Try again… and choose wisely 😌👇</p>
+
+    <button onclick="location.reload()">Go Back 😅</button>
+  `;
 }
 
 </script>
