@@ -5,43 +5,34 @@
 
 <style>
 body {
-  text-align: center;
-  font-family: sans-serif;
-  background: black;
-  color: white;
-  overflow: hidden;
+  text-align:center;
+  font-family:sans-serif;
+  background:black;
+  color:white;
+  overflow:hidden;
 }
 
 h1 {
-  margin-top: 30px;
-  font-size: 50px;
-  color: #ff4d6d;
-}
-
-p {
-  font-size: 20px;
-  width: 80%;
-  margin: auto;
+  font-size:50px;
+  color:#ff4d6d;
 }
 
 img {
-  width: 200px;
-  margin: 10px;
-  border-radius: 10px;
+  width:200px;
+  margin:10px;
+  border-radius:10px;
 }
 
-/* 🌹🌻 falling flowers */
 .flower {
-  position: fixed;
-  top: -50px;
-  width: 35px;
-  pointer-events: none;
-  animation: fall linear forwards;
+  position:fixed;
+  top:-50px;
+  width:40px;
+  animation:fall linear forwards;
 }
 
 @keyframes fall {
   to {
-    transform: translateY(100vh) rotate(360deg);
+    transform:translateY(100vh) rotate(360deg);
   }
 }
 </style>
@@ -52,78 +43,61 @@ img {
 <h1>🎉 Happy Birthday 🎂</h1>
 
 <p>
-Today is not just your birthday…  
-It’s the day the world got a little more crazy 😏  
+You’re chaos like Luffy 😂  
+Cool like Gojo 😎  
+Strong like Zoro 💪  
+Deep like Itachi 🖤  
 
-You’re like Zoro (lost but strong 💪),  
-Gojo (too cool 😎),  
-Itachi (deep 🖤),  
-and Luffy (pure chaos 😂).  
-
-Life is honestly better with you in it.  
-
-Stay weird. Stay real. Stay YOU.  
-Happy Birthday once again 🎂🔥  
+Stay crazy… life is better with you 🔥  
 </p>
 
-<!-- YOUR PHOTO -->
 <img src="photo.png">
-
-<!-- ANIME IMAGES -->
-<img src="zoro.jpg">
-<img src="gojo.jpg">
-<img src="itachi.jpg">
 <img src="luffy.jpg">
 
-<!-- 🎵 MUSIC -->
-<audio autoplay loop>
-  <source src="https://www2.cs.uic.edu/~i101/SoundFiles/HappyBirthday.mid" type="audio/mpeg">
+<!-- MUSIC -->
+<audio id="music" loop>
+  <source src="https://www2.cs.uic.edu/~i101/SoundFiles/HappyBirthday.mid">
 </audio>
 
-<!-- 🎊 CONFETTI LIBRARY -->
+<!-- CONFETTI -->
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
 <script>
 
-// 🎊 First big burst
-setTimeout(() => {
+// play music after click
+document.body.addEventListener("click", () => {
+  document.getElementById("music").play();
+});
+
+// confetti
+setInterval(()=>{
   confetti({
-    particleCount: 200,
-    spread: 120,
-    origin: { y: 0.6 }
+    particleCount:80,
+    spread:70,
+    origin:{y:0.6}
   });
-}, 500);
+},2000);
 
-// 🎊 Continuous confetti
-setInterval(() => {
-  confetti({
-    particleCount: 80,
-    spread: 70,
-    origin: { y: 0.6 }
-  });
-}, 2000);
+// flowers FIXED (visible now)
+function flower(){
+  let f=document.createElement("img");
 
-
-// 🌹🌻 Falling flowers
-function createFlower() {
-  const flower = document.createElement("img");
-
-  if (Math.random() > 0.8) {
-    flower.src = "sunflower.jpg"; // 👈 your jpg
+  if(Math.random()>0.7){
+    f.src="sunflower.jpg";
   } else {
-    flower.src = "rose.jpg"; // 👈 your jpg
+    f.src="rose.jpg";
   }
 
-  flower.className = "flower";
-  flower.style.left = Math.random() * window.innerWidth + "px";
-  flower.style.animationDuration = (3 + Math.random() * 5) + "s";
+  f.className="flower";
+  f.style.left=Math.random()*window.innerWidth+"px";
+  f.style.animationDuration=(4+Math.random()*3)+"s";
 
-  document.body.appendChild(flower);
+  document.body.appendChild(f);
 
-  setTimeout(() => flower.remove(), 8000);
+  setTimeout(()=>f.remove(),8000);
 }
 
-setInterval(createFlower, 300);
+setInterval(flower,400);
 
 </script>
 
