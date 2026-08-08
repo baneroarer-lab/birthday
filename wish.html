@@ -1,46 +1,47 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Make a Wish</title>
+<title>Make a Wish 🎂</title>
 
 <style>
 body {
-  text-align: center;
-  background: black;
-  color: white;
-  font-family: Arial;
-}
-
-img {
-  width: 250px;
+  text-align:center;
+  background:black;
+  color:white;
+  font-family:sans-serif;
 }
 
 button {
-  padding: 10px 20px;
-  font-size: 18px;
-  border-radius: 10px;
-  cursor: pointer;
+  padding:15px 25px;
+  font-size:18px;
+  background:#ff4d6d;
+  border:none;
+  color:white;
+  border-radius:10px;
+  cursor:pointer;
 }
 </style>
 </head>
 
 <body>
 
-<h1>Make a wish... 🥺✨</h1>
+<h1>🎂 Make a Wish</h1>
 
-<img src="https://i.imgur.com/3ZQ3Z6F.png" id="cake">
+<p>Close your eyes... make a wish... then blow the candle 🎂</p>
+
+<img src="https://cdn.pixabay.com/photo/2016/03/05/19/02/happy-birthday-1239086_1280.jpg" width="250">
 
 <br><br>
 
 <button onclick="blow()">Blow Candle 🕯️</button>
 
 <script>
-function blow() {
-  document.body.innerHTML = "<h1>✨ Wish Granted ✨</h1>";
-  
-  setTimeout(() => {
+function blow(){
+  alert("✨ Wish made! ✨");
+
+  setTimeout(()=>{
     window.location.href = "birthday.html";
-  }, 2000);
+  },2000);
 }
 </script>
 
