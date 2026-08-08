@@ -22,6 +22,7 @@ body {
     height: 100vh;
 }
 
+/* Buttons */
 button {
     padding: 12px 20px;
     margin: 10px;
@@ -39,6 +40,7 @@ button:hover {
     transform: scale(1.1);
 }
 
+/* Image */
 img {
     max-width: 250px;
     margin: 15px;
@@ -46,8 +48,16 @@ img {
     box-shadow: 0 0 20px rgba(255,255,255,0.6);
 }
 
+/* Glow text */
 h1 {
     text-shadow: 0 0 10px white, 0 0 20px pink;
+}
+
+/* blinking hint */
+@keyframes blink {
+  0% {opacity: 0.5;}
+  50% {opacity: 1;}
+  100% {opacity: 0.5;}
 }
 </style>
 </head>
@@ -57,7 +67,12 @@ h1 {
 <div id="content" class="container">
 
 <h1>🎂 Make a Wish 🎂</h1>
+
 <p>Close your eyes… make a wish… then blow the candle 🎂</p>
+
+<p style="font-size:14px; text-shadow:0 0 10px white; animation:blink 1.5s infinite;">
+👉 Tap anywhere to start 🎵
+</p>
 
 <img src="cake.jpg">
 
@@ -76,18 +91,18 @@ h1 {
 <script>
 let music = document.getElementById("music");
 
-// ▶️ start music
+// ▶️ Start music on first tap
 document.body.addEventListener("click", function startMusic() {
     music.play().catch(()=>{});
     document.body.removeEventListener("click", startMusic);
 });
 
-// 💾 save music time
+// 💾 Save music time
 function saveMusicTime() {
     localStorage.setItem("musicTime", music.currentTime);
 }
 
-// 🎂 animation
+// 🎂 Blow animation (WITHOUT breaking music)
 function blow(){
 
   saveMusicTime();
@@ -113,7 +128,7 @@ function blow(){
   },4000);
 }
 
-// 😆 NO button
+// 😆 Playful NO
 function noClick(){
   alert("😒 Don't act smart… press Blow Candle 🎂");
 }
