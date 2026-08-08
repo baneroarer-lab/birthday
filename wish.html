@@ -77,21 +77,29 @@ h1 {
 </div>
 
 <!-- 🎵 MUSIC -->
+<!-- 🎵 MUSIC -->
 <audio id="music" loop>
   <source src="line.mp3" type="audio/mpeg">
 </audio>
 
 <script>
+let music = document.getElementById("music");
 
-// ✅ Start music on first click anywhere
+// ▶️ Start music on first click
 document.body.addEventListener("click", function startMusic() {
-    let m = document.getElementById("music");
-    m.play().catch(()=>{});
+    music.play().catch(()=>{});
     document.body.removeEventListener("click", startMusic);
 });
 
-// 🎂 Blow animation with anime delay
+// 💾 Save current time before leaving page
+function saveMusicTime() {
+    localStorage.setItem("musicTime", music.currentTime);
+}
+
+// 🎂 Blow animation
 function blow(){
+
+  saveMusicTime(); // 🔥 save before transition
 
   document.body.innerHTML = "<h1>✨ Making your wish...</h1>";
 
