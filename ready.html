@@ -36,22 +36,33 @@ button {
 
 <br>
 
-<button onclick="goNext()">YES 😍</button>
-<button onclick="moveButton(this)">NO 😤</button>
+<button onclick="moveYes(this)">YES 😍</button>
+<button onclick="noClicked()">NO 😒</button>
 
 <script>
+let moveCount = 0;
+
+function moveYes(btn) {
+  if (moveCount < 2) {
+    btn.style.position = "absolute";
+    btn.style.top = Math.random() * 300 + "px";
+    btn.style.left = Math.random() * 300 + "px";
+    moveCount++;
+  } else {
+    goNext();
+  }
+}
+
 function goNext() {
-  document.body.innerHTML = "<h1>Wait... 😏</h1>";
+  document.body.innerHTML = "<h1>Okay okay 😏 going ahead...</h1>";
   
   setTimeout(() => {
     window.location.href = "wish.html";
   }, 2000);
 }
 
-function moveButton(btn) {
-  btn.style.position = "absolute";
-  btn.style.top = Math.random()*300 + "px";
-  btn.style.left = Math.random()*300 + "px";
+function noClicked() {
+  alert("No?? 😭 After all this effort?? Try again 😤");
 }
 </script>
 
