@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Make a Wish</title>
+<title>Make a Wish 🎂</title>
 
 <style>
 body {
@@ -10,13 +10,13 @@ body {
     font-family: Arial, sans-serif;
     text-align: center;
 
-    /* 💖 Pink + Purple Gradient */
+    /* 💖 Pink + Purple Gradient (FIXED) */
     background: linear-gradient(135deg, #ff9a9e, #a18cd1);
     height: 100vh;
     color: white;
 }
 
-/* Center everything nicely */
+/* Center everything */
 .container {
     display: flex;
     flex-direction: column;
@@ -25,7 +25,7 @@ body {
     height: 100vh;
 }
 
-/* Buttons styling */
+/* Buttons */
 button {
     padding: 12px 20px;
     margin: 10px;
@@ -43,7 +43,7 @@ button:hover {
     transform: scale(1.1);
 }
 
-/* Image styling */
+/* Image */
 img {
     max-width: 250px;
     margin: 15px;
@@ -51,46 +51,48 @@ img {
     box-shadow: 0 0 20px rgba(255,255,255,0.6);
 }
 
-/* Glow text */
+/* Glow heading */
 h1 {
     text-shadow: 0 0 10px white, 0 0 20px pink;
 }
 </style>
-body {
-  text-align:center;
-  background:black;
-  color:white;
-  font-family:sans-serif;
-}
 
-img {
-  width:250px;
-  border-radius:10px;
-}
-
-button {
-  padding:15px 25px;
-  font-size:18px;
-  margin-top:20px;
-}
-</style>
 </head>
 
 <body>
 
-<h1>🎂 Make a Wish</h1>
+<div class="container">
 
-<p>Close your eyes… make a wish… then blow candle 🎂</p>
+<h1>🎂 Make a Wish 🎂</h1>
+
+<p>Close your eyes… make a wish… then blow the candle 🎂</p>
 
 <img src="cake.jpg" id="cake">
 
 <br>
 
 <button onclick="blow()">Blow Candle 🕯️</button>
+<button onclick="noClick()">No 😒</button>
+
+</div>
+
+<!-- 🎵 MUSIC -->
+<audio id="music" loop>
+  <source src="line.mp3" type="audio/mpeg">
+</audio>
 
 <script>
 
+// ✅ Start music on first click anywhere
+document.body.addEventListener("click", function startMusic() {
+    let m = document.getElementById("music");
+    m.play().catch(()=>{});
+    document.body.removeEventListener("click", startMusic);
+});
+
+// 🎂 Blow animation with anime delay
 function blow(){
+
   document.body.innerHTML = "<h1>✨ Making your wish...</h1>";
 
   setTimeout(()=>{
@@ -108,6 +110,11 @@ function blow(){
   setTimeout(()=>{
     window.location.href="birthday.html";
   },4000);
+}
+
+// 😆 Playful NO button
+function noClick(){
+  alert("😒 Oye... don't act smart. Press 'Blow Candle' properly 🎂😤");
 }
 
 </script>
