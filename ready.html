@@ -87,14 +87,12 @@ button {
 
 let count = 0;
 
-const yesBtn = document.getElementById("yes");
-
-// 🏃 YES button runs away twice
-yesBtn.onmouseover = function(){
+function moveYes(){
   if(count < 2){
-    this.style.position="absolute";
-    this.style.left=Math.random()*80+"%";
-    this.style.top=Math.random()*80+"%";
+    let btn = document.getElementById("yes");
+    btn.style.position="absolute";
+    btn.style.left=Math.random()*80+"%";
+    btn.style.top=Math.random()*80+"%";
     count++;
   }
 }
@@ -103,22 +101,19 @@ function go(){
   window.location.href="wish.html";
 }
 
-// 😈 FUNNY NO RESPONSE
 function no(){
-
   document.body.innerHTML = `
-    <h1>😤 Seriously? NO?</h1>
-    <p>You really gonna say NO on a birthday?? 😑</p>
+    <h1>😤 Oyeeee!!</h1>
+    <p>No ah? Really?? 😑</p>
 
     <img src="https://media.giphy.com/media/3o7btPCcdNniyf0ArS/giphy.gif" width="250">
 
-    <p>Try again… and choose wisely 😌👇</p>
+    <p>It’s someone’s birthday and you pressed NO?? 😭</p>
 
-    <button onclick="location.reload()">Go Back 😅</button>
+    <button onclick="location.reload()">Try Again 😅</button>
   `;
 }
 
 </script>
-
 </body>
 </html>
