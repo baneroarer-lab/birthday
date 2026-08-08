@@ -4,89 +4,70 @@
 <title>Happy Birthday 🎂</title>
 
 <style>
-  
 body {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-    text-align: center;
+    margin:0;
+    padding:0;
+    text-align:center;
+    font-family:sans-serif;
+    color:white;
+    overflow:hidden;
 
-    /* 💖 Pink + Purple Gradient */
+    /* 🌸 Background */
     background: linear-gradient(135deg, #ff9a9e, #a18cd1);
-    height: 100vh;
-    color: white;
 }
 
-/* Center everything nicely */
-.container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-}
-
-/* Buttons styling */
-button {
-    padding: 12px 20px;
-    margin: 10px;
-    border: none;
-    border-radius: 10px;
-    background: #ff4d6d;
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-button:hover {
-    background: #ff1e4d;
-    transform: scale(1.1);
-}
-
-/* Image styling */
-img {
-    max-width: 250px;
-    margin: 15px;
-    border-radius: 15px;
-    box-shadow: 0 0 20px rgba(255,255,255,0.6);
-}
-
-/* Glow text */
+/* Heading */
 h1 {
-    text-shadow: 0 0 10px white, 0 0 20px pink;
-}
-</style>
-body {
-  text-align:center;
-  font-family:sans-serif;
-  background:black;
-  color:white;
-  overflow:hidden;
+    font-size:50px;
+    margin-top:20px;
+    text-shadow:0 0 10px white, 0 0 20px pink;
 }
 
-h1 {
-  font-size:50px;
-  color:#ff4d6d;
+/* Message */
+p {
+    font-size:18px;
+    padding:10px 20px;
 }
 
-img {
-  width:200px;
-  margin:10px;
-  border-radius:10px;
+/* MAIN PHOTO */
+.main-photo img {
+    width:300px;
+    border-radius:20px;
+    box-shadow:0 0 30px rgba(255,255,255,0.8);
+    margin:20px 0;
 }
 
+/* ANIME ROW */
+.anime-row {
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    flex-wrap:wrap;
+}
+
+.anime-row img {
+    width:120px;
+    border-radius:12px;
+    box-shadow:0 0 15px rgba(255,255,255,0.6);
+    transition:0.3s;
+}
+
+.anime-row img:hover {
+    transform:scale(1.1);
+}
+
+/* FLOWERS */
 .flower {
-  position:fixed;
-  top:-50px;
-  width:40px;
-  animation:fall linear forwards;
+    position:fixed;
+    top:-50px;
+    width:40px;
+    animation:fall linear forwards;
 }
 
 @keyframes fall {
-  to {
-    transform:translateY(100vh) rotate(360deg);
-  }
+    to {
+        transform:translateY(100vh) rotate(360deg);
+    }
 }
 </style>
 </head>
@@ -100,59 +81,71 @@ Happy Birthday 🎂✨<br><br>
 
 I don’t just wish you happiness today… I genuinely hope life gives you everything you’ve been working for.<br><br>
 
-You deserve success, peace, and all the good things coming your way. No matter what happens, just keep going — you’ve got something special in you, and it’s going to take you far 💫<br><br>
+You deserve success, peace, and all the good things coming your way. Keep going — you’ve got something special in you 💫<br><br>
 
-And yeah… stay the same crazy, fun, slightly annoying person I know 😄     MANKI                         <br><br>
+Stay the same crazy, fun, slightly annoying person 😄 because life would be boring without you.<br><br>
 
-Wishing you a future full of wins, growth, and moments that make you proud of yourself ❤️<br><br>
+Wishing you a future full of wins, growth, and proud moments ❤️<br><br>
 
 Enjoy your day… this one’s yours 🎉🔥
 </p>
 
-<img src="photo.png">
-<img src="luffy.jpg">
+<h2>✨ The Star of Today ✨</h2>
 
-<!-- MUSIC -->
+<!-- BIG PHOTO -->
+<div class="main-photo">
+  <img src="photo.png">
+</div>
+
+<!-- ANIME ROW -->
+<div class="anime-row">
+  <img src="luffy.jpg">
+  <img src="zoro.jpg">
+  <img src="gojo.jpg">
+  <img src="itachi.jpg">
+</div>
+
+<!-- 🎵 MUSIC -->
 <audio id="music" loop>
   <source src="https://www2.cs.uic.edu/~i101/SoundFiles/HappyBirthday.mid">
 </audio>
 
-<!-- CONFETTI -->
+<!-- 🎉 CONFETTI -->
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
 <script>
 
-// play music after click
+// ▶️ Play music on tap
 document.body.addEventListener("click", () => {
-  document.getElementById("music").play();
+    document.getElementById("music").play();
 });
 
-// confetti
+// 🎉 Confetti burst
 setInterval(()=>{
-  confetti({
-    particleCount:80,
-    spread:70,
-    origin:{y:0.6}
-  });
+    confetti({
+        particleCount:80,
+        spread:70,
+        origin:{y:0.6}
+    });
 },2000);
 
-// flowers FIXED (visible now)
+// 🌹🌻 Falling flowers (FIXED)
 function flower(){
-  let f=document.createElement("img");
+    let f=document.createElement("img");
 
-  if(Math.random()>0.7){
-    f.src="sunflower.jpg";
-  } else {
-    f.src="rose.jpg";
-  }
+    if(Math.random()>0.7){
+        f.src="sunflower.jpg";
+    } else {
+        f.src="rose.jpg";
+    }
 
-  f.className="flower";
-  f.style.left=Math.random()*window.innerWidth+"px";
-  f.style.animationDuration=(4+Math.random()*3)+"s";
+    f.className="flower";
+    f.style.left=Math.random()*window.innerWidth+"px";
+    f.style.animationDuration=(4+Math.random()*3)+"s";
 
-  document.body.appendChild(f);
+    document.body.appendChild(f);
 
-  setTimeout(()=>f.remove(),8000);
+    setTimeout(()=>f.remove(),8000);
 }
 
 setInterval(flower,400);
