@@ -5,6 +5,58 @@
 
 <style>
 body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    text-align: center;
+
+    /* 💖 Pink + Purple Gradient */
+    background: linear-gradient(135deg, #ff9a9e, #a18cd1);
+    height: 100vh;
+    color: white;
+}
+
+/* Center everything nicely */
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Buttons styling */
+button {
+    padding: 12px 20px;
+    margin: 10px;
+    border: none;
+    border-radius: 10px;
+    background: #ff4d6d;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #ff1e4d;
+    transform: scale(1.1);
+}
+
+/* Image styling */
+img {
+    max-width: 250px;
+    margin: 15px;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(255,255,255,0.6);
+}
+
+/* Glow text */
+h1 {
+    text-shadow: 0 0 10px white, 0 0 20px pink;
+}
+</style>
+body {
   text-align:center;
   background:black;
   color:white;
