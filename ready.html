@@ -1,44 +1,57 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Ready? 👀</title>
+<title>Ready?</title>
+
 <style>
 body {
-  text-align:center;
-  font-family:sans-serif;
-  background:linear-gradient(135deg,#a18cd1,#fbc2eb);
-  color:white;
-  padding-top:100px;
+  text-align: center;
+  background: url('luffy.jpg') no-repeat center/cover;
+  color: white;
+  font-family: Arial;
 }
+
+img {
+  width: 200px;
+  margin-top: 20px;
+  border-radius: 20px;
+}
+
 button {
-  padding:15px 30px;
-  margin:20px;
-  border:none;
-  border-radius:10px;
-  font-size:18px;
+  padding: 10px 20px;
+  margin: 10px;
+  font-size: 18px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
 }
-.yes { background:#00c853; color:white; }
-.no { background:#ff1744; color:white; position:absolute; }
 </style>
 </head>
 
 <body>
 
-<h1>Are you ready for your surprise? 😏</h1>
+<h1>Are you ready? 😏</h1>
 
-<button class="yes" onclick="go()">YES 😍</button>
-<button class="no" id="noBtn">NO 😜</button>
+<img src="https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif">
+
+<br>
+
+<button onclick="goNext()">YES 😍</button>
+<button onclick="moveButton(this)">NO 😤</button>
 
 <script>
-function go(){
-  window.location.href="birthday.html";
+function goNext() {
+  document.body.innerHTML = "<h1>Wait... 😏</h1>";
+  
+  setTimeout(() => {
+    window.location.href = "wish.html";
+  }, 2000);
 }
 
-// funny moving NO button
-let noBtn = document.getElementById("noBtn");
-noBtn.onmouseover = function(){
-  noBtn.style.left = Math.random()*80 + "%";
-  noBtn.style.top = Math.random()*80 + "%";
+function moveButton(btn) {
+  btn.style.position = "absolute";
+  btn.style.top = Math.random()*300 + "px";
+  btn.style.left = Math.random()*300 + "px";
 }
 </script>
 
