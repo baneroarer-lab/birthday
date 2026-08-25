@@ -1,17 +1,37 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 <title>Make a Wish 🎂</title>
 
 <style>
+
+* {
+    box-sizing: border-box;
+}
+
 body {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
     text-align: center;
-    background: linear-gradient(135deg, #ff9a9e, #a18cd1);
-    height: 100vh;
     color: white;
+
+    /* 🌸 FLOWER BACKGROUND */
+    background-image:
+        linear-gradient(
+            rgba(20, 0, 30, 0.45),
+            rgba(20, 0, 30, 0.45)
+        ),
+        url("flower.jpg");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+    height: 100vh;
+    overflow: hidden;
 }
 
 .container {
@@ -20,118 +40,259 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
+    padding: 20px;
 }
 
-/* Buttons */
+/* 🎂 Heading */
+h1 {
+    font-size: 40px;
+    text-shadow:
+        0 0 10px white,
+        0 0 20px pink,
+        0 0 35px #ff69b4;
+}
+
+/* 💬 Text */
+p {
+    font-size: 18px;
+    text-shadow:
+        0 0 8px white,
+        0 0 15px pink;
+}
+
+/* 👉 Blinking hint */
+@keyframes blink {
+    0% {
+        opacity: 0.5;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0.5;
+    }
+}
+
+.music-hint {
+    font-size: 14px;
+    text-shadow: 0 0 10px white;
+    animation: blink 1.5s infinite;
+}
+
+/* 🎂 Cake */
+.cake {
+    max-width: 250px;
+    width: 80%;
+    margin: 15px;
+    border-radius: 15px;
+
+    box-shadow:
+        0 0 20px rgba(255,255,255,0.6),
+        0 0 40px rgba(255,105,180,0.5);
+
+    transition: 0.3s;
+}
+
+.cake:hover {
+    transform: scale(1.05);
+}
+
+/* 💗 Buttons */
 button {
     padding: 12px 20px;
     margin: 10px;
+
     border: none;
     border-radius: 10px;
+
     background: #ff4d6d;
     color: white;
+
     font-size: 16px;
     cursor: pointer;
+
     transition: 0.3s;
+
+    box-shadow: 0 0 10px rgba(255,255,255,0.4);
 }
 
 button:hover {
     background: #ff1e4d;
     transform: scale(1.1);
+
+    box-shadow: 0 0 20px rgba(255,255,255,0.8);
 }
 
-/* Image */
-img {
-    max-width: 250px;
-    margin: 15px;
+/* ✨ Transition images */
+.transition-img {
+    max-width: 280px;
+    width: 80%;
+
     border-radius: 15px;
-    box-shadow: 0 0 20px rgba(255,255,255,0.6);
+
+    box-shadow:
+        0 0 25px white,
+        0 0 45px pink;
+
+    animation: appear 1s ease;
 }
 
-/* Glow text */
-h1 {
-    text-shadow: 0 0 10px white, 0 0 20px pink;
+@keyframes appear {
+
+    0% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
 }
 
-/* blinking hint */
-@keyframes blink {
-  0% {opacity: 0.5;}
-  50% {opacity: 1;}
-  100% {opacity: 0.5;}
-}
 </style>
+
 </head>
 
 <body>
 
 <div id="content" class="container">
 
-<h1>🎂 Make a Wish 🎂</h1>
+    <h1>🎂 Make a Wish 🎂</h1>
 
-<p>Close your eyes… make a wish… then blow the candle 🎂</p>
+    <p>
+        Close your eyes… make a wish… then blow the candle 🎂
+    </p>
 
-<p style="font-size:14px; text-shadow:0 0 10px white; animation:blink 1.5s infinite;">
-👉 Tap anywhere to start 🎵
-</p>
+    <p class="music-hint">
+        👉 Tap anywhere to start 🎵
+    </p>
 
-<img src="cake.jpg">
+    <img
+        src="cake.jpg"
+        class="cake"
+        alt="Birthday Cake"
+    >
 
-<br>
+    <br>
 
-<button onclick="blow()">Blow Candle 🕯️</button>
-<button onclick="noClick()">No 😒</button>
+    <div>
+
+        <button onclick="blow()">
+            Blow Candle 🕯️
+        </button>
+
+        <button onclick="noClick()">
+            No 😒
+        </button>
+
+    </div>
 
 </div>
 
 <!-- 🎵 MUSIC -->
 <audio id="music" loop>
-  <source src="line.mp3" type="audio/mpeg">
+    <source src="line.mp3" type="audio/mpeg">
 </audio>
 
 <script>
+
 let music = document.getElementById("music");
 
-// ▶️ Start music on first tap
+/* 🎵 Start music on first tap */
 document.body.addEventListener("click", function startMusic() {
-    music.play().catch(()=>{});
+
+    music.play().catch(() => {});
+
     document.body.removeEventListener("click", startMusic);
+
 });
 
-// 💾 Save music time
+
+/* 💾 Save music time */
 function saveMusicTime() {
-    localStorage.setItem("musicTime", music.currentTime);
+
+    localStorage.setItem(
+        "musicTime",
+        music.currentTime
+    );
+
 }
 
-// 🎂 Blow animation (WITHOUT breaking music)
-function blow(){
 
-  saveMusicTime();
+/* 🎂 Blow Candle */
+function blow() {
 
-  let content = document.getElementById("content");
+    saveMusicTime();
 
-  content.innerHTML = "<h1>✨ Making your wish...</h1>";
+    let content = document.getElementById("content");
 
-  setTimeout(()=>{
-    content.innerHTML = "<img src='zoro.jpg'>";
-  },1000);
+    /* ✨ Making wish */
+    content.innerHTML = `
+        <h1>✨ Making your wish... ✨</h1>
+    `;
 
-  setTimeout(()=>{
-    content.innerHTML = "<img src='gojo.jpg'>";
-  },2000);
+    /* 🗡️ Zoro */
+    setTimeout(() => {
 
-  setTimeout(()=>{
-    content.innerHTML = "<img src='itachi.jpg'>";
-  },3000);
+        content.innerHTML = `
+            <img
+                src="zoro.jpg"
+                class="transition-img"
+                alt="Zoro"
+            >
+        `;
 
-  setTimeout(()=>{
-    window.location.href="birthday.html";
-  },4000);
+    }, 1000);
+
+    /* 👁️ Gojo */
+    setTimeout(() => {
+
+        content.innerHTML = `
+            <img
+                src="gojo.jpg"
+                class="transition-img"
+                alt="Gojo"
+            >
+        `;
+
+    }, 2000);
+
+    /* 🔥 Itachi */
+    setTimeout(() => {
+
+        content.innerHTML = `
+            <img
+                src="itachi.jpg"
+                class="transition-img"
+                alt="Itachi"
+            >
+        `;
+
+    }, 3000);
+
+    /* 🎉 Birthday page */
+    setTimeout(() => {
+
+        window.location.href = "birthday.html";
+
+    }, 4000);
+
 }
 
-// 😆 Playful NO
-function noClick(){
-  alert("😒 Don't act smart… press Blow Candle 🎂");
+
+/* 😆 NO BUTTON */
+function noClick() {
+
+    alert(
+        "😒 Don't act smart… press Blow Candle 🎂"
+    );
+
 }
+
 </script>
 
 </body>
