@@ -1,81 +1,268 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Enter Password</title>
+
+<title>Enter Password 🍫</title>
+
 <style>
-body {text-align:center;background:black;color:white;font-family:sans-serif;}
-input,button {padding:10px;font-size:16px;margin:10px;}
-<style>
+
+* {
+    box-sizing: border-box;
+}
+
 body {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
-    text-align: center;
-
-    /* 💖 Pink + Purple Gradient */
-    background: linear-gradient(135deg, #ff9a9e, #a18cd1);
-    height: 100vh;
     color: white;
+
+    /* 🍫 CHOCOLATE BACKGROUND */
+    background-image:
+        linear-gradient(
+            rgba(55, 20, 15, 0.45),
+            rgba(70, 20, 45, 0.55)
+        ),
+        url("chocolate.jpg");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    height: 100vh;
+    overflow: hidden;
 }
 
-/* Center everything nicely */
+/* Center box */
 .container {
+    height: 100vh;
+
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+
+    padding: 20px;
 }
 
-/* Buttons styling */
-button {
-    padding: 12px 20px;
-    margin: 10px;
+/* 🍫 Main card */
+.card {
+    background: rgba(45, 15, 20, 0.72);
+
+    padding: 40px 35px;
+
+    border-radius: 25px;
+
+    border: 2px solid rgba(255,255,255,0.5);
+
+    box-shadow:
+        0 0 25px rgba(255,105,180,0.6),
+        0 0 60px rgba(120,50,150,0.5);
+
+    backdrop-filter: blur(5px);
+
+    max-width: 420px;
+    width: 90%;
+}
+
+/* Heading */
+h1 {
+    font-size: 38px;
+    margin-bottom: 10px;
+
+    text-shadow:
+        0 0 10px white,
+        0 0 20px pink;
+}
+
+/* Subtitle */
+.subtitle {
+    font-size: 17px;
+    margin-bottom: 25px;
+}
+
+/* Password input */
+input {
+    width: 85%;
+
+    padding: 14px;
+
+    font-size: 17px;
+
     border: none;
-    border-radius: 10px;
-    background: #ff4d6d;
+    outline: none;
+
+    border-radius: 12px;
+
+    text-align: center;
+
+    background: rgba(255,255,255,0.95);
+
+    color: #4b2142;
+
+    box-shadow: 0 0 15px rgba(255,255,255,0.4);
+}
+
+/* Enter button */
+button {
+    padding: 13px 28px;
+
+    margin-top: 18px;
+
+    border: none;
+    border-radius: 12px;
+
+    background: linear-gradient(
+        135deg,
+        #ff4d6d,
+        #a18cd1
+    );
+
     color: white;
-    font-size: 16px;
+
+    font-size: 17px;
+    font-weight: bold;
+
     cursor: pointer;
+
     transition: 0.3s;
+
+    box-shadow: 0 0 15px rgba(255,105,180,0.5);
 }
 
 button:hover {
-    background: #ff1e4d;
     transform: scale(1.1);
+
+    box-shadow:
+        0 0 20px pink,
+        0 0 30px purple;
 }
 
-/* Image styling */
-img {
-    max-width: 250px;
-    margin: 15px;
-    border-radius: 15px;
-    box-shadow: 0 0 20px rgba(255,255,255,0.6);
+/* Little message */
+.hint {
+    margin-top: 20px;
+
+    font-size: 14px;
+
+    opacity: 0.85;
+
+    text-shadow: 0 0 8px white;
 }
 
-/* Glow text */
-h1 {
-    text-shadow: 0 0 10px white, 0 0 20px pink;
+/* Floating hearts */
+.heart {
+    position: fixed;
+
+    bottom: -30px;
+
+    font-size: 25px;
+
+    animation: floatUp 6s linear forwards;
+
+    pointer-events: none;
 }
+
+@keyframes floatUp {
+
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+
+    15% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(-110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
 </style>
+
 </head>
 
 <body>
 
-<h1>🔒 Enter Password</h1>
+<div class="container">
 
-<input type="password" id="pass">
-<br>
-<button onclick="check()">Enter</button>
+    <div class="card">
+
+        <h1>🔐 Enter Password</h1>
+
+        <p class="subtitle">
+            🍫 A little chocolate surprise is waiting... 👀
+        </p>
+
+        <input
+            type="password"
+            id="pass"
+            placeholder="Enter the secret password"
+            onkeydown="if(event.key==='Enter') check()"
+        >
+
+        <br>
+
+        <button onclick="check()">
+            Enter 🎂
+        </button>
+
+        <p class="hint">
+            💗 Only the special person knows this ;)
+        </p>
+
+    </div>
+
+</div>
+
 
 <script>
-function check(){
-  if(document.getElementById("pass").value==="queen of niggas"){
-    window.location.href="ready.html";
-  }else{
-    alert("Wrong password 😜");
-  }
+
+/* 🔐 PASSWORD */
+function check() {
+
+    if (
+        document.getElementById("pass").value ===
+        "queen of niggas"
+    ) {
+
+        window.location.href = "ready.html";
+
+    } else {
+
+        alert("Wrong password 😜 Try again!");
+
+    }
 }
+
+
+/* 💗 Floating hearts */
+function createHeart() {
+
+    let heart = document.createElement("div");
+
+    heart.className = "heart";
+
+    let hearts = ["❤️", "💗", "💜", "💕", "✨", "🍫"];
+
+    heart.innerHTML =
+        hearts[Math.floor(Math.random() * hearts.length)];
+
+    heart.style.left =
+        Math.random() * 100 + "vw";
+
+    heart.style.animationDuration =
+        (4 + Math.random() * 4) + "s";
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 8000);
+}
+
+setInterval(createHeart, 700);
+
 </script>
 
 </body>
