@@ -1,119 +1,396 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Ready?</title>
+
+<title>Ready? 🌌</title>
 
 <style>
+
+* {
+    box-sizing: border-box;
+}
+
 body {
     margin: 0;
     padding: 0;
+
     font-family: Arial, sans-serif;
     text-align: center;
 
-    /* 💖 Pink + Purple Gradient */
-    background: linear-gradient(135deg, #ff9a9e, #a18cd1);
-    height: 100vh;
     color: white;
+
+    /* 🌌 AURORA BACKGROUND */
+    background-image:
+        linear-gradient(
+            rgba(20, 10, 45, 0.35),
+            rgba(40, 10, 60, 0.45)
+        ),
+        url("aurora.jpg");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    height: 100vh;
+    overflow: hidden;
 }
 
-/* Center everything nicely */
+
+/* 🌌 Center everything */
+
 .container {
+
+    height: 100vh;
+
     display: flex;
     flex-direction: column;
+
     justify-content: center;
     align-items: center;
-    height: 100vh;
+
+    padding: 20px;
 }
 
-/* Buttons styling */
-button {
-    padding: 12px 20px;
-    margin: 10px;
-    border: none;
-    border-radius: 10px;
-    background: #ff4d6d;
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
-    transition: 0.3s;
+
+/* ✨ Main card */
+
+.card {
+
+    background: rgba(20, 10, 45, 0.55);
+
+    padding: 35px 40px;
+
+    border-radius: 25px;
+
+    border: 2px solid rgba(255,255,255,0.5);
+
+    box-shadow:
+        0 0 25px rgba(150,100,255,0.7),
+        0 0 60px rgba(255,100,220,0.35);
+
+    backdrop-filter: blur(5px);
+
+    max-width: 450px;
+    width: 90%;
 }
+
+
+/* Heading */
+
+h1 {
+
+    font-size: 42px;
+
+    margin-bottom: 10px;
+
+    text-shadow:
+        0 0 10px white,
+        0 0 20px #c77dff,
+        0 0 35px #ff4dff;
+
+    animation: glow 2s infinite alternate;
+}
+
+
+/* Subtitle */
+
+.subtitle {
+
+    font-size: 18px;
+
+    margin-bottom: 20px;
+
+    text-shadow: 0 0 8px white;
+}
+
+
+/* Cat GIF */
+
+.cat {
+
+    width: 220px;
+
+    max-width: 80%;
+
+    border-radius: 18px;
+
+    margin: 15px;
+
+    box-shadow:
+        0 0 20px rgba(255,255,255,0.7),
+        0 0 40px rgba(180,100,255,0.5);
+}
+
+
+/* Buttons */
+
+button {
+
+    padding: 14px 28px;
+
+    margin: 10px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    color: white;
+
+    font-size: 17px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+
+}
+
+
+/* YES */
+
+#yes {
+
+    background: linear-gradient(
+        135deg,
+        #ff4d6d,
+        #c77dff
+    );
+
+    box-shadow:
+        0 0 15px rgba(255,100,200,0.7);
+}
+
+
+/* NO */
+
+.no-btn {
+
+    background: rgba(40,20,60,0.8);
+
+    border: 1px solid rgba(255,255,255,0.5);
+}
+
+
+/* Hover */
 
 button:hover {
-    background: #ff1e4d;
+
     transform: scale(1.1);
+
+    box-shadow:
+        0 0 20px white,
+        0 0 30px #d580ff;
 }
 
-/* Image styling */
-img {
-    max-width: 250px;
-    margin: 15px;
-    border-radius: 15px;
-    box-shadow: 0 0 20px rgba(255,255,255,0.6);
+
+/* Floating stars */
+
+.star {
+
+    position: fixed;
+
+    bottom: -30px;
+
+    font-size: 20px;
+
+    pointer-events: none;
+
+    animation: floatUp linear forwards;
 }
 
-/* Glow text */
-h1 {
-    text-shadow: 0 0 10px white, 0 0 20px pink;
+
+@keyframes floatUp {
+
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+
+    15% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(-110vh) rotate(360deg);
+        opacity: 0;
+    }
 }
+
+
+@keyframes glow {
+
+    from {
+        text-shadow:
+            0 0 10px white,
+            0 0 20px #c77dff;
+    }
+
+    to {
+        text-shadow:
+            0 0 15px white,
+            0 0 30px #ff4dff,
+            0 0 45px #c77dff;
+    }
+
+}
+
 </style>
-body {
-  text-align:center;
-  background:black;
-  color:white;
-  font-family:sans-serif;
-}
 
-button {
-  padding:15px 25px;
-  font-size:18px;
-  margin:10px;
-  position:relative;
-}
-</style>
 </head>
+
 
 <body>
 
-<h1>Are you ready? 😏</h1>
+<div class="container">
 
-<img src="https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif" width="200">
+    <div class="card">
 
-<br><br>
+        <h1>🌌 Are you ready? 😏</h1>
 
-<button id="yes" onclick="go()">YES 😍</button>
-<button onclick="no()">NO 😈</button>
+        <p class="subtitle">
+            Something special is waiting for you... 👀✨
+        </p>
+
+        <!-- 🐱 Cat GIF -->
+        <img
+            class="cat"
+            src="https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif"
+        >
+
+        <br>
+
+        <button id="yes" onclick="go()">
+            YES 😍
+        </button>
+
+        <button class="no-btn" onclick="no()">
+            NO 😈
+        </button>
+
+    </div>
+
+</div>
+
 
 <script>
 
 let count = 0;
 
-function moveYes(){
-  if(count < 2){
-    let btn = document.getElementById("yes");
-    btn.style.position="absolute";
-    btn.style.left=Math.random()*80+"%";
-    btn.style.top=Math.random()*80+"%";
-    count++;
-  }
+
+/* 😈 YES button runs away twice */
+
+function moveYes() {
+
+    if (count < 2) {
+
+        let btn = document.getElementById("yes");
+
+        btn.style.position = "absolute";
+
+        btn.style.left =
+            Math.random() * 80 + "%";
+
+        btn.style.top =
+            Math.random() * 80 + "%";
+
+        count++;
+    }
+
 }
 
-function go(){
-  window.location.href="wish.html";
+
+/* ❤️ YES */
+
+function go() {
+
+    window.location.href = "wish.html";
+
 }
 
-function no(){
-  document.body.innerHTML = `
-    <h1>😤 Oyeeee!!</h1>
-    <p>No ah? Really?? 😑</p>
 
-    <img src="https://media.giphy.com/media/3o7btPCcdNniyf0ArS/giphy.gif" width="250">
+/* 😈 NO */
 
-    <p>It’s someone’s birthday and you pressed NO?? 😭</p>
+function no() {
 
-    <button onclick="location.reload()">Try Again 😅</button>
-  `;
+    document.body.innerHTML = `
+
+        <div class="container">
+
+            <div class="card">
+
+                <h1>😤 OYEEEE!</h1>
+
+                <p class="subtitle">
+                    No ah?? Really?? 😑
+                </p>
+
+                <img
+                    class="cat"
+                    src="https://media.giphy.com/media/3o7btPCcdNniyf0ArS/giphy.gif"
+                >
+
+                <p>
+                    It's someone's birthday and you pressed NO?? 😭
+                </p>
+
+                <p>
+                    Come back and behave yourself 😤🎂
+                </p>
+
+                <button onclick="location.reload()">
+                    Try Again 😅
+                </button>
+
+            </div>
+
+        </div>
+
+    `;
+
 }
+
+
+/* ✨ Floating stars */
+
+function createStar() {
+
+    let star = document.createElement("div");
+
+    star.className = "star";
+
+    let stars = [
+        "✨",
+        "⭐",
+        "💜",
+        "💗",
+        "🌟",
+        "🌌"
+    ];
+
+    star.innerHTML =
+        stars[Math.floor(Math.random() * stars.length)];
+
+    star.style.left =
+        Math.random() * 100 + "vw";
+
+    star.style.animationDuration =
+        (4 + Math.random() * 4) + "s";
+
+    document.body.appendChild(star);
+
+    setTimeout(() => {
+
+        star.remove();
+
+    }, 8000);
+
+}
+
+
+setInterval(createStar, 600);
 
 </script>
+
 </body>
 </html>
