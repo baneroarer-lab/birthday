@@ -20,23 +20,14 @@ body {
     min-height: 100vh;
     overflow-x: hidden;
 
-    /* 🐱 CAT IMAGE ONLY */
-    background-image: url("cat.jpg");
-
-    /* Keep the original ratio */
-    background-size: contain;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-
-    /* Background base */
+    /* 🐱 CAT BACKGROUND */
     background-color: #111;
 
     position: relative;
 }
 
 
-/* 🐱 Transparent cat overlay */
+/* 🐱 Transparent cat background */
 
 body::before {
     content: "";
@@ -52,7 +43,10 @@ body::before {
     background-image: url("cat.jpg");
 
     background-size: contain;
-    background-position: center;
+
+    /* 👇 Move cat slightly lower */
+    background-position: center 65%;
+
     background-repeat: no-repeat;
 
     opacity: 0.18;
