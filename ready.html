@@ -13,13 +13,10 @@
 body {
     margin: 0;
     padding: 0;
-
     font-family: Arial, sans-serif;
     text-align: center;
-
     color: white;
 
-    /* 🌌 AURORA BACKGROUND */
     background-image:
         linear-gradient(
             rgba(20, 10, 45, 0.35),
@@ -35,33 +32,19 @@ body {
     overflow: hidden;
 }
 
-
-/* 🌌 Center everything */
-
 .container {
-
     height: 100vh;
-
     display: flex;
     flex-direction: column;
-
     justify-content: center;
     align-items: center;
-
     padding: 20px;
 }
 
-
-/* ✨ Main card */
-
 .card {
-
     background: rgba(20, 10, 45, 0.55);
-
     padding: 35px 40px;
-
     border-radius: 25px;
-
     border: 2px solid rgba(255,255,255,0.5);
 
     box-shadow:
@@ -74,13 +57,8 @@ body {
     width: 90%;
 }
 
-
-/* Heading */
-
 h1 {
-
     font-size: 42px;
-
     margin-bottom: 10px;
 
     text-shadow:
@@ -91,29 +69,16 @@ h1 {
     animation: glow 2s infinite alternate;
 }
 
-
-/* Subtitle */
-
 .subtitle {
-
     font-size: 18px;
-
     margin-bottom: 20px;
-
     text-shadow: 0 0 8px white;
 }
 
-
-/* Cat GIF */
-
 .cat {
-
     width: 220px;
-
     max-width: 80%;
-
     border-radius: 18px;
-
     margin: 15px;
 
     box-shadow:
@@ -121,36 +86,19 @@ h1 {
         0 0 40px rgba(180,100,255,0.5);
 }
 
-
-/* Buttons */
-
 button {
-
     padding: 14px 28px;
-
     margin: 10px;
-
     border: none;
-
     border-radius: 12px;
-
     color: white;
-
     font-size: 17px;
-
     font-weight: bold;
-
     cursor: pointer;
-
     transition: 0.3s;
-
 }
 
-
-/* YES */
-
 #yes {
-
     background: linear-gradient(
         135deg,
         #ff4d6d,
@@ -161,21 +109,12 @@ button {
         0 0 15px rgba(255,100,200,0.7);
 }
 
-
-/* NO */
-
 .no-btn {
-
     background: rgba(40,20,60,0.8);
-
     border: 1px solid rgba(255,255,255,0.5);
 }
 
-
-/* Hover */
-
 button:hover {
-
     transform: scale(1.1);
 
     box-shadow:
@@ -183,22 +122,13 @@ button:hover {
         0 0 30px #d580ff;
 }
 
-
-/* Floating stars */
-
 .star {
-
     position: fixed;
-
     bottom: -30px;
-
     font-size: 20px;
-
     pointer-events: none;
-
     animation: floatUp linear forwards;
 }
-
 
 @keyframes floatUp {
 
@@ -217,7 +147,6 @@ button:hover {
     }
 }
 
-
 @keyframes glow {
 
     from {
@@ -232,15 +161,19 @@ button:hover {
             0 0 30px #ff4dff,
             0 0 45px #c77dff;
     }
-
 }
 
 </style>
 
 </head>
 
-
 <body>
+
+<!-- 🎵 MUSIC -->
+<audio id="music" loop>
+    <source src="line.mp3" type="audio/mpeg">
+</audio>
+
 
 <div class="container">
 
@@ -252,7 +185,10 @@ button:hover {
             Something special is waiting for you... 👀✨
         </p>
 
-        <!-- 🐱 Cat GIF -->
+        <p style="font-size:14px; opacity:0.8;">
+            👉 Tap anywhere to start the surprise 🎵
+        </p>
+
         <img
             class="cat"
             src="https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif"
@@ -260,7 +196,7 @@ button:hover {
 
         <br>
 
-        <button id="yes" onclick="go()">
+        <button id="yes" onclick="yesClick()">
             YES 😍
         </button>
 
@@ -275,10 +211,41 @@ button:hover {
 
 <script>
 
+let music = document.getElementById("music");
+
 let count = 0;
 
 
-/* 😈 YES button runs away twice */
+/* 🎵 START MUSIC ON FIRST TAP */
+
+document.body.addEventListener("click", function startMusic() {
+
+    let savedTime = localStorage.getItem("musicTime");
+
+    if (savedTime) {
+        music.currentTime = parseFloat(savedTime);
+    }
+
+    music.play().catch(() => {});
+
+    document.body.removeEventListener("click", startMusic);
+
+});
+
+
+/* 💾 SAVE MUSIC POSITION */
+
+function saveMusicTime() {
+
+    localStorage.setItem(
+        "musicTime",
+        music.currentTime
+    );
+
+}
+
+
+/* 😈 YES BUTTON RUNS AWAY TWICE */
 
 function moveYes() {
 
@@ -295,23 +262,36 @@ function moveYes() {
             Math.random() * 80 + "%";
 
         count++;
+
     }
 
 }
 
 
-/* ❤️ YES */
+/* ❤️ YES BUTTON */
 
-function go() {
+function yesClick() {
 
-    window.location.href = "wish.html";
+    if (count < 2) {
+
+        moveYes();
+
+    } else {
+
+        saveMusicTime();
+
+        window.location.href = "wish.html";
+
+    }
 
 }
 
 
-/* 😈 NO */
+/* 😈 NO BUTTON */
 
 function no() {
+
+    saveMusicTime();
 
     document.body.innerHTML = `
 
@@ -351,7 +331,7 @@ function no() {
 }
 
 
-/* ✨ Floating stars */
+/* ✨ FLOATING STARS */
 
 function createStar() {
 
@@ -380,13 +360,10 @@ function createStar() {
     document.body.appendChild(star);
 
     setTimeout(() => {
-
         star.remove();
-
     }, 8000);
 
 }
-
 
 setInterval(createStar, 600);
 
