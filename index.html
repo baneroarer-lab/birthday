@@ -99,7 +99,8 @@ input {
 
     color: #4b2142;
 
-    box-shadow: 0 0 15px rgba(255,255,255,0.4);
+    box-shadow:
+        0 0 15px rgba(255,255,255,0.4);
 }
 
 /* Enter button */
@@ -126,7 +127,8 @@ button {
 
     transition: 0.3s;
 
-    box-shadow: 0 0 15px rgba(255,105,180,0.5);
+    box-shadow:
+        0 0 15px rgba(255,105,180,0.5);
 }
 
 button:hover {
@@ -176,6 +178,7 @@ button:hover {
         transform: translateY(-110vh) rotate(360deg);
         opacity: 0;
     }
+
 }
 
 </style>
@@ -208,7 +211,7 @@ button:hover {
         </button>
 
         <p class="hint">
-            💗How is the Password Non-Racist 😜 :)
+            💗 How is the Password Non-Racist 😜 :)
         </p>
 
     </div>
@@ -218,8 +221,39 @@ button:hover {
 
 <script>
 
-/* 🔐 PASSWORD */
+/* ================================================= */
+/* 🔴🟢 SURPRISE ON / OFF SWITCH                    */
+/* ================================================= */
+
+/*
+   🔴 false = SURPRISE OFF
+   🟢 true  = SURPRISE ON
+
+   Change ONLY this line when you want.
+*/
+
+let surpriseON = false;
+
+
+/* ================================================= */
+/* 🔐 PASSWORD CHECK                                */
+/* ================================================= */
+
 function check() {
+
+    /* 🔴 SURPRISE IS OFF */
+
+    if (!surpriseON) {
+
+        alert(
+            "😏 The surprise is temporarily closed!\n\nCome back later 👀🎂"
+        );
+
+        return;
+    }
+
+
+    /* 🟢 SURPRISE IS ON */
 
     if (
         document.getElementById("pass").value ===
@@ -230,23 +264,40 @@ function check() {
 
     } else {
 
-        alert("Wrong password 😜 Try again!");
+        alert(
+            "Wrong password 😜 Try again!"
+        );
 
     }
+
 }
 
 
-/* 💗 Floating hearts */
+/* ================================================= */
+/* 💗 FLOATING HEARTS                              */
+/* ================================================= */
+
 function createHeart() {
 
     let heart = document.createElement("div");
 
     heart.className = "heart";
 
-    let hearts = ["❤️", "💗", "💜", "💕", "✨", "🍫"];
+    let hearts = [
+        "❤️",
+        "💗",
+        "💜",
+        "💕",
+        "✨",
+        "🍫"
+    ];
 
     heart.innerHTML =
-        hearts[Math.floor(Math.random() * hearts.length)];
+        hearts[
+            Math.floor(
+                Math.random() * hearts.length
+            )
+        ];
 
     heart.style.left =
         Math.random() * 100 + "vw";
@@ -257,8 +308,11 @@ function createHeart() {
     document.body.appendChild(heart);
 
     setTimeout(() => {
+
         heart.remove();
+
     }, 8000);
+
 }
 
 setInterval(createHeart, 700);
